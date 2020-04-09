@@ -1,3 +1,7 @@
+var stopArr = ["Adios", "Mañana sera otro día", "Hasta luego lucas!"];
+var stopIndex = Math.floor(Math.random() * stopArr.length);
+var randomStop = stopArr[stopIndex];
+
 var languageStrings = {
     "es": {
         "translation": {
@@ -9,10 +13,10 @@ var languageStrings = {
                 "Peanut"
             ],
             "SKILL_NAME" : "parque magico",
-            "GET_FACT_MESSAGE" : "tu personaje es: ",
+            "GET_FACT_MESSAGE" : "Tu personaje es: ",
             "HELP_MESSAGE" : "You can say tell me a llama fact, or, you can say exit... What can I help you with?",
-            "HELP_REPROMPT" : "What can I help you with?",
-            "STOP_MESSAGE" : "hasta luego lucas!"
+            "HELP_REPROMPT" : "Qué puedo hacer por ti",
+            "STOP_MESSAGE" : randomStop
         }
     }
 };
