@@ -27,8 +27,12 @@ var handlers = {
         var randomFact = factArr[factIndex];
 
         // Create speech output
-        var speechOutput = this.t("GET_FACT_MESSAGE") + randomFact;
-        this.emit(':tellWithCard', speechOutput, this.t("SKILL_NAME"), randomFact)
+        //var speechOutput = this.t("GET_FACT_MESSAGE") + randomFact;
+        //this.emit(':tellWithCard', speechOutput, this.t("SKILL_NAME"), randomFact)
+        // Create speech output
+        var getANewFactQuestion = " quieres preguntar otro dato o finalizar por hoy.";
+        var speechOutput = this.t("GET_FACT_MESSAGE") + randomFact + getANewFactQuestion;
+        this.emit(':askWithCard', speechOutput, getANewFactQuestion, this.t("SKILL_NAME"), randomFact);
     },
     'AMAZON.HelpIntent': function () {
         var speechOutput = this.t("HELP_MESSAGE");
