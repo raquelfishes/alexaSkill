@@ -30,12 +30,12 @@ bst launch
 
 ## <a name="Resources"></a>More Resources 📢
 
-[Bespoken](https://bespoken.io)
-[Alexa skill](https://github.com/alexa/skill-sample-nodejs-fact)
-[Alexa cookbook](https://github.com/alexa/alexa-cookbook)
+* [Bespoken](https://bespoken.io)
+* [Alexa skill](https://github.com/alexa/skill-sample-nodejs-fact)
+* [Alexa cookbook](https://github.com/alexa/alexa-cookbook)
 
-[Official Alexa Skills Kit SDK for Node.js](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-nodejs/overview.html) - The Official Node.js SDK Documentation
-[Official Alexa Skills Kit Documentation](https://developer.amazon.com/en-US/docs/alexa/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
+* [Official Alexa Skills Kit SDK for Node.js](https://developer.amazon.com/en-US/docs/alexa/alexa-skills-kit-sdk-for-nodejs/overview.html) - The Official Node.js SDK Documentation
+* [Official Alexa Skills Kit Documentation](https://developer.amazon.com/en-US/docs/alexa/ask-overviews/build-skills-with-the-alexa-skills-kit.html) - Official Alexa Skills Kit Documentation
 
 
 ### <a name="Author">Author ✒️
