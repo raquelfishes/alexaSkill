@@ -1,10 +1,12 @@
 # Peces and July Alexa Skill
-First skill
+First skill 🤓
 
++ [Overview](#Overview)
 + [Installation](#Installation)
++ [Resources](#Resources)
 + [Author](#Author)
 
-# Overview
+## <a name="Overview"></a>Overview 📄
 
 Simple fun facts skill for Alexa and Lambda.
 
@@ -26,7 +28,7 @@ Call an intent
 bst launch
 ```
 
-# More Resources at
+## <a name="Resources"></a>More Resources 📢
 
 [Bespoken](https://bespoken.io)
 
