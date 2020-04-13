@@ -1,20 +1,22 @@
 {
-  "name": "llama-facts",
+  "name": "parque-magico",
   "version": "1.0.0",
-  "description": "Create a llama facts alexa skill.",
+  "description": "Create a parque magico get characters skill",
   "main": "index.js",
   "scripts": {
-    "proxy": "bst proxy lambda index.js",
-    "getFact": "bst intend GetNewFactIntent",
-    "deploy": "bst deploy lambda"
-  },
-  "dependencies": {
-    "alexa-sdk": "^1.0.25",
-    "bespoken-tools": "^2.4.55",
-    "dotenv": "^6.2.0"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/bespoken/llama-facts.git"
+    "url": "git+https://github.com/raquelfishes/alexaSkill.git"
+  },
+  "author": "raquelfishes",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/raquelfishes/alexaSkill/issues"
+  },
+  "homepage": "https://github.com/raquelfishes/alexaSkill#readme",
+  "dependencies": {
+    "ask-sdk": "^2.8.0"
   }
 }
