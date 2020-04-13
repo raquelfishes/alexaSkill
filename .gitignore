@@ -8,3 +8,4 @@ node_modules
 .idea
 .DS_Store
 asl-config.json
+package-lock.json
