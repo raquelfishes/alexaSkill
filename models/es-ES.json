@@ -1,0 +1,39 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "parque magico",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "Gus",
+                        "Cooper",
+                        "Peanut",
+                        "Greta",
+                        "Rollo",
+                        "June",
+                        "Chimpanzombie"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        }
+    }
+}

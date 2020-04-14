@@ -1,0 +1,43 @@
+{
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "wonder park",
+            "intents": [
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "HelloWorldIntent",
+                    "slots": [],
+                    "samples": [
+                        "Gus",
+                        "Cooper",
+                        "Peanut",
+                        "Greta",
+                        "Rollo",
+                        "June",
+                        "Chimpanzombie"
+                    ]
+                },
+                {
+                    "name": "AMAZON.NavigateHomeIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                }
+            ],
+            "types": []
+        }
+    }
+}

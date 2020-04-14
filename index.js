@@ -2,6 +2,8 @@
 // Please visit https://alexa.design/cookbook for additional examples on implementing slots, dialog management,
 // session persistence, api calls, and more.
 const Alexa = require('ask-sdk-core');
+const i18n = require('i18next');
+const languageStrings = require('./languageStrings.js');
 
 const LaunchRequestHandler = 
 {
@@ -11,10 +13,10 @@ const LaunchRequestHandler =
     },
     handle(handlerInput) 
     {
-        const speakOutput = 'Hello! Welcome to cake walk. That was a piece of cake! Bye!';
+        const speakOutput = handlerInput.t('WELCOME_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            //.reprompt(speakOutput)
+            .reprompt(handlerInput.t('HELP_MSG'))
             .getResponse();
     }
 };
@@ -28,7 +30,7 @@ const HelloWorldIntentHandler =
     },
     handle(handlerInput) 
     {
-        const speakOutput = 'Hello World!';
+        const speakOutput = handlerInput.t('HELLO_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -49,7 +51,7 @@ const HelpIntentHandler =
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            .reprompt(handlerInput.t('HELP_MSG'))
             .getResponse();
     }
 };
@@ -64,18 +66,45 @@ const CancelAndStopIntentHandler =
     },
     handle(handlerInput) 
     {
-        const speakOutput = 'Goodbye!';
+        const speakOutput = handlerInput.t('GOODBYE_MSG');
         return handlerInput.responseBuilder
             .speak(speakOutput)
             .getResponse();
     }
 };
 
+///
+//FallbackIntent triggers when a customer says something that doesn’t map to any intents in your skill
+//It must also be defined in the language model (if the locale supports it)
+//This handler can be safely added but will be ingnored in locales that do not support it yet 
+///
+const FallbackIntentHandler = 
+{
+    canHandle(handlerInput) 
+    {
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
+            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'AMAZON.FallbackIntent';
+    },
+    handle(handlerInput) 
+    {
+        const speakOutput = handlerInput.t('FALLBACK_MSG');
+        return handlerInput.responseBuilder
+            .speak(speechText)
+            .reprompt(handlerInput.t('HELP_MSG'))
+            .getResponse();
+    }
+};
+
+///
+//SessionEndedRequest notifies that a session was ended. This handler will be triggered when a currently open 
+//session is closed for one of the following reasons: 1) The user says "exit" or "quit". 2) The user does not 
+//respond or says something that does not match an intent defined in your voice model. 3) An error occurs 
+///
 const SessionEndedRequestHandler = 
 {
     canHandle(handlerInput) 
     {
-        return handlerInput.requestEnvelope.request.type === 'SessionEndedRequest';
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'SessionEndedRequest';
     },
     handle(handlerInput) 
     {
@@ -97,7 +126,7 @@ const IntentReflectorHandler =
     handle(handlerInput) 
     {
         const intentName = handlerInput.requestEnvelope.request.intent.name;
-        const speakOutput = `You just triggered ${intentName}`;
+        const speakOutput = handlerInput.t('REFLECTOR_MSG', {intent: intentName});
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
@@ -118,12 +147,39 @@ const ErrorHandler =
     handle(handlerInput, error) 
     {
         console.log(`~~~~ Error handled: ${error.message}`);
-        const speakOutput = `Sorry, I couldn't understand what you said. Please try again.`;
+        const speakOutput = handlerInput.t('ERROR_MSG');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(speakOutput)
+            .reprompt(handlerInput.t('HELP_MSG'))
             .getResponse();
+    }
+};
+
+
+// This request interceptor will log all incoming requests to this lambda
+const LoggingRequestInterceptor = {
+    process(handlerInput) {
+        console.log(`Incoming request: ${JSON.stringify(handlerInput.requestEnvelope)}`);
+    }
+};
+
+// This response interceptor will log all outgoing responses of this lambda
+const LoggingResponseInterceptor = {
+    process(handlerInput, response) {
+        console.log(`Outgoing response: ${JSON.stringify(response)}`);
+    }
+};
+
+// This request interceptor will bind a translation function 't' to the handlerInput
+const LocalisationRequestInterceptor = {
+    process(handlerInput) {
+        i18n.init({
+            lng: Alexa.getLocale(handlerInput.requestEnvelope),
+            resources: languageStrings
+        }).then((t) => {
+            handlerInput.t = (...args) => t(...args);
+        });
     }
 };
 
@@ -136,8 +192,14 @@ exports.handler = Alexa.SkillBuilders.custom()
         HelloWorldIntentHandler,
         HelpIntentHandler,
         CancelAndStopIntentHandler,
+        FallbackIntentHandler,
         SessionEndedRequestHandler,
         IntentReflectorHandler) // make sure IntentReflectorHandler is last so it doesn't override your custom intent handlers
     .addErrorHandlers(
         ErrorHandler)
+    .addRequestInterceptors(
+        LocalisationRequestInterceptor,
+        LoggingRequestInterceptor)
+    .addResponseInterceptors(
+        LoggingResponseInterceptor)
     .lambda();

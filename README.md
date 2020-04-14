@@ -8,25 +8,35 @@ First skill 🤓
 
 ## <a name="Overview"></a>Overview 📄
 
-Simple fun facts skill for Alexa and Lambda.
+Simple fun facts to start creating a skill for Alexa.
+
+
+
 
 ## <a name="Installation"></a>Installation 🛠️
 
-Install the dependencies
+
+Install the npm project
 ```
-npm install -g bespoken-tools
-npm install
+$ npm install
 ```
 
-Start the server
+Install alexa-skill-local npm package (global recommended)
 ```
-bst proxy lambda index.js
+$ npm install -g alexa-skill-local
 ```
 
-Call an intent
+Run alexa-skill-loca
 ```
-bst launch
+$ alexa-skill-local
 ```
+
+After that follow the instructions on the console.
+
+The instructions will be similar as follow:
+
+Open web-browser
+
 
 ## <a name="Resources"></a>More Resources 📢
 
@@ -40,7 +50,7 @@ bst launch
 
 ### <a name="Author">Author ✒️
 
-* **Raquel Peces** - *Initial work and documentation* - [RauquelPeces](https://github.com/raquelfishes)
+* **Raquel Peces** - *Initial work and documentation* - [RaquelPeces](https://github.com/raquelfishes)
 * **Julio Martin** - *Initial work and documentation* - [JulioMartin](https://github.com/JulioUrjc)
 
 <!-- También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto.--> 
