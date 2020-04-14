@@ -39,20 +39,20 @@ Run alexa-skill-local command.
 $ alexa-skill-local
 ```
 
-When prompted open `<http://localhost:3001>` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
+When prompted open `http://localhost:3001` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
 
 #### <a name="Options"></a> Options
 
-You can configure the options of the alexa-skill-local command:
+You can configure the options of the `alexa-skill-local` command:
 ```
 $ alexa-skill-local [-f|--file <lambda_function_entry_file>] [-p|--port <server_and_ngrok_port>] [-c|--config <json_config_file>] [--inspect-brk <port>]
 ```
 
-`<--file>` : Optional. When run without --file argument alexa-skill-local searches for main entry in package.json. If not found, it searches for index.js in the root directory.
+`--file` : Optional. When run without --file argument alexa-skill-local searches for main entry in package.json. If not found, it searches for index.js in the root directory.
 
-`<--port>`: Optional. Specify port value for mock lambda server and ngrok. Default value is 3000.
+`--port`: Optional. Specify port value for mock lambda server and ngrok. Default value is 3000.
 
-`<--config>`: Optional. If not specified, it searches for asl-config.json in the root directory. You need to have config file, otherwise skill endpoint update won't work. Config file has to be of following format (If you are not sure of the "stage", in most cases it is "development"):
+`--config`: Optional. If not specified, it searches for asl-config.json in the root directory. You need to have config file, otherwise skill endpoint update won't work. Config file has to be of following format (If you are not sure of the "stage", in most cases it is "development"):
 
 ```
 {
@@ -61,7 +61,7 @@ $ alexa-skill-local [-f|--file <lambda_function_entry_file>] [-p|--port <server_
 }
 ```
 
-`<--inspect-brk>`: Optional. Specify this flag if you want to attach debugger to mock lambda server process. If port is not specified debugger will listen to is 9229.
+`--inspect-brk`: Optional. Specify this flag if you want to attach debugger to mock lambda server process. If port is not specified debugger will listen to is 9229.
 
 After that follow the instructions on the console.
 
