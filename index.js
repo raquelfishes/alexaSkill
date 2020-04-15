@@ -21,16 +21,31 @@ const LaunchRequestHandler =
     }
 };
 
-const HelloWorldIntentHandler = 
+const BirthdayIntentHandler = 
 {
     canHandle(handlerInput) 
     {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-            && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+            && handlerInput.requestEnvelope.request.intent.name === 'BirthdayIntent';
     },
     handle(handlerInput) 
     {
-        const speakOutput = handlerInput.t('HELLO_MSG');
+        const {requestEnvelope, responseBuilder} = handlerInput;
+        const {intent} = requestEnvelope.request;
+
+        let speakOutput = handlerInput.t('REJECTED_MSG');
+
+        if (intent.confirmationStatus === 'CONFIRMED') {
+            const day = Alexa.getSlotValue(requestEnvelope, 'day');
+            const year = Alexa.getSlotValue(requestEnvelope, 'year');
+            const month = Alexa.getSlotValue(requestEnvelope, 'month');
+
+            speakOutput = handlerInput.t('REGISTER_MSG', {day: day, month: month, year: year}); // we'll save these values in the next module
+        } else {
+            const repromptText = handlerInput.t('HELP_MSG');
+            responseBuilder.reprompt(repromptText);
+        }
+
         return handlerInput.responseBuilder
             .speak(speakOutput)
             //.reprompt('add a reprompt if you want to keep the session open for the user to respond')
@@ -47,11 +62,11 @@ const HelpIntentHandler =
     },
     handle(handlerInput) 
     {
-        const speakOutput = 'You can say hello to me! How can I help?';
+        const speakOutput = handler.t('HELP_MSG');
 
         return handlerInput.responseBuilder
             .speak(speakOutput)
-            .reprompt(handlerInput.t('HELP_MSG'))
+            .reprompt(speakOutput)
             .getResponse();
     }
 };
@@ -121,11 +136,11 @@ const IntentReflectorHandler =
 {
     canHandle(handlerInput) 
     {
-        return handlerInput.requestEnvelope.request.type === 'IntentRequest';
+        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest';
     },
     handle(handlerInput) 
     {
-        const intentName = handlerInput.requestEnvelope.request.intent.name;
+        const intentName = Alexa.getIntentName(handlerInput.requestEnvelope);
         const speakOutput = handlerInput.t('REFLECTOR_MSG', {intent: intentName});
 
         return handlerInput.responseBuilder
@@ -172,7 +187,7 @@ const LoggingResponseInterceptor = {
 };
 
 // This request interceptor will bind a translation function 't' to the handlerInput
-const LocalisationRequestInterceptor = {
+const LocalizationRequestInterceptor = {
     process(handlerInput) {
         i18n.init({
             lng: Alexa.getLocale(handlerInput.requestEnvelope),
@@ -198,7 +213,7 @@ exports.handler = Alexa.SkillBuilders.custom()
     .addErrorHandlers(
         ErrorHandler)
     .addRequestInterceptors(
-        LocalisationRequestInterceptor,
+        LocalizationRequestInterceptor,
         LoggingRequestInterceptor)
     .addResponseInterceptors(
         LoggingResponseInterceptor)

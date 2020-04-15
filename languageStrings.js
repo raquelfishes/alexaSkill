@@ -5,9 +5,10 @@ var randomStop = stopArr[stopIndex];
 const languageStrings = {
     es: {
         translation: {
-            WELCOME_MSG: 'Bienvenido, puedes decir Hola o Ayuda. Cual prefieres?',
-            HELLO_MSG: 'Parque Magico!',
-            HELP_MSG: 'Puedes decirme hola. Cómo te puedo ayudar?',
+            WELCOME_MSG: 'Bienvenido! Dime, cuando es naciste?',
+            HELLO_MSG: 'Naciste el {{day}} de {{month}} de {{year}}!',
+            REJECTED_MSG: 'No pasa nada. Por favor dime la fecha de nuevo.',
+            HELP_MSG: 'Puedes decirme el día, mes y año de tu nacimiento y tomaré nota de ello',
             GOODBYE_MSG: 'Hasta luego!',
             REFLECTOR_MSG: 'Acabas de activar {{intent}}',
             FALLBACK_MSG: 'Lo siento, no se nada sobre eso. Por favor inténtalo otra vez.',
@@ -16,9 +17,10 @@ const languageStrings = {
     },
     en: {
         translation: {
-            WELCOME_MSG: 'Welcome, you can say Hello or Help. Which would you like to try?',
-            HELLO_MSG: 'Wonder Park!',
-            HELP_MSG: 'You can say hello to me! How can I help?',
+            WELCOME_MSG: "Welcome, Let's have some fun with your birthday!",
+            HELLO_MSG: 'Your birthday is {{month}} {{day}} {{year}}',
+            REJECTED_MSG: 'No problem. Please say the date again',
+            HELP_MSG: "You can tell me your date of birth and I'll take note",
             GOODBYE_MSG: 'Goodbye!',
             REFLECTOR_MSG: 'You just triggered {{intent}}',
             FALLBACK_MSG: 'Sorry, I don\'t know about that. Please try again.',
