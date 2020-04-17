@@ -123,7 +123,7 @@
         "dialog": {
             "intents": [
                 {
-                    "name": "BirthdayIntent",
+                    "name": "RegisterBirthdayIntent",
                     "confirmationRequired": true,
                     "prompts": {
                         "confirmation": "Confirm.Intent.221850906033"
@@ -200,6 +200,42 @@
                                 }
                             ]
                         }
+                    ]
+                },
+                {
+                    "name": "SayBirthdayIntent",
+                    "slots": [],
+                    "samples": [
+                        "cuando cumplo años",
+                        "cuando cumplo",
+                        "cuanto falta",
+                        "cuanto falta para mi cumpleaños",
+                        "cuanto falta para mi cumple",
+                        "cuanto queda",
+                        "cuanto queda para mi cumpleaños",
+                        "cuanto queda para mi cumple",
+                        "tiempo restante para mi cumpleaños",
+                        "tiempo restante para mi cumple",
+                        "dame mi cumpleaños",
+                        "dame mi cumple",
+                        "mi cumpleaños",
+                        "mi cumple",
+                        "cumpleaños",
+                        "cumple",
+                        "cuando es mi cumpleaños",
+                        "cuando es mi cumple",
+                        "dime mi cumpleaños",
+                        "dime mi cumple",
+                        "dime cuando cumplo años",
+                        "dime cuando cumplo",
+                        "dime cuanto falta",
+                        "dime cuanto falta para mi cumpleaños",
+                        "dime cuanto falta para mi cumple",
+                        "dime cuanto queda",
+                        "dime cuanto queda para mi cumpleaños",
+                        "dime cuanto queda para mi cumple",
+                        "dime cuando es mi cumpleaños",
+                        "dime cuando es mi cumple"
                     ]
                 }
             ],

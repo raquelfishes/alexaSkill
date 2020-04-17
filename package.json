@@ -21,6 +21,11 @@
   "homepage": "https://github.com/raquelfishes/alexaSkill#readme",
   "dependencies": {
     "ask-sdk": "^2.8.0",
-    "i18next": "^15.0.5"
+    "ask-sdk-core": "^2.8.0",
+    "ask-sdk-dynamodb-persistence-adapter": "^2.8.0",
+    "ask-sdk-s3-persistence-adapter": "^2.7.0",
+    "dynamodb-localhost": "0.0.9",
+    "i18next": "^15.0.5",
+    "moment-timezone": "^0.5.23"
   }
 }
