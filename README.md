@@ -52,7 +52,7 @@ You have to download DynamoDB Locally and follow the instructions from [here](ht
 
 Once that you have configure your local DynamoDB and check that it is working. You have to edit the `DynamoDBClient.js`, to fill it with your personal configuration. Your code should look similar to:
 
-```
+```javascript
 var myDynamoDB = new awsSdk.DynamoDB({
     endpoint: 'http://localhost:8000', // This is the default one
     accessKeyId: 'your-aws-acces-key-id', //i.e. raquelFishes
@@ -61,14 +61,15 @@ var myDynamoDB = new awsSdk.DynamoDB({
     apiVersion: 'latest'
 });
 ```
-Region is really important, you can find the available regions [here](https://docs.aws.amazon.com/en_en/general/latest/gr/rande.html)
+
+Region field is really important, you can find the available regions [here](https://docs.aws.amazon.com/en_en/general/latest/gr/rande.html)
 
 ### <a name="Usage"></a> Usage
 
 Once that you have configure everythin. Run alexa-skill-local command. 
 
 ```
-$ alexa-skill-local
+$ alexa-skill-local [-f lambda/index.js]
 ```
 
 When prompted open `http://localhost:3001` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
