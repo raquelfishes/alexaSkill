@@ -11,22 +11,14 @@ module.exports = {
                 bucketName: process.env.S3_PERSISTENCE_BUCKET
             });
         } else {
-    
-            var awsSdk = require('aws-sdk');
-            var myDynamoDB = new awsSdk.DynamoDB({
-                endpoint: 'http://localhost:8000',
-                accessKeyId: 'raquelmunoz',
-                secretAccessKey: 'raquelpeces',
-                region: 'eu-west-1',
-                apiVersion: 'latest'
-            });
-    
+            
+            var myDynamoDB = require( './dynamoDBClient');
             // IMPORTANT: don't forget to give DynamoDB access to the role you're using to run this lambda (via IAM policy)
             const {DynamoDbPersistenceAdapter} = require('ask-sdk-dynamodb-persistence-adapter');
             return new DynamoDbPersistenceAdapter({
                 tableName: tableName || 'parque_magico',
                 createTable: true,
-                dynamoDBClient: myDynamoDB
+                dynamoDBClient: myDynamoDB.myDynamoDB
             });
         }
     }
