@@ -44,12 +44,13 @@ Fill the `asl-confin.json` with your skillId, created at amazon.developer.consol
 }
 ```
 
+
 #### <a name="DynamoDB Config"></a> DynamoDB Config
 
 To test the connection to DynamoDB with the persistence adapter.
 You have to download DynamoDB Locally and follow the instructions from [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
 
-Once that you have configure your local DynamoDB and check that it is working. You have to edit the DynamoDBClient.js, to fill it with your personal configuration. Your code should look similar to:
+Once that you have configure your local DynamoDB and check that it is working. You have to edit the `DynamoDBClient.js`, to fill it with your personal configuration. Your code should look similar to:
 
 ```
 var myDynamoDB = new awsSdk.DynamoDB({

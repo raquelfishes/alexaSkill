@@ -115,7 +115,7 @@ dist
 .pnp.*
 
 # Personal excluded files
-dynamoDB*.js
+dynamoDBClient.js
 
 asl-config.json
 package-lock.json
