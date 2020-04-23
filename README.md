@@ -32,18 +32,19 @@ Install alexa-skill-local. It can be installed globally (recommended) or in your
 $ npm install -g alexa-skill-local
 ```
 
+### <a name="Fill with your data"></a> Fill with your data
 
-### <a name="Usage"></a> Usage
-
-Run alexa-skill-local command. 
+#### <a name="Skill ID Data"></a> Skill ID Data
+Fill the `asl-confin.json` with your skillId, created at amazon.developer.console. It will look similar to:
 
 ```
-$ alexa-skill-local
+{
+    "skillId" : "your-amazon-skill-id", //i.e. amzn1.ask.skill.076a8942-3adf-4c90-b6d8-f1ac6764cf00
+    "stage" : "development"
+}
 ```
 
-When prompted open `http://localhost:3001` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
-
-### <a name="Using with DynamoDB"></a> Ussing with DynamoDB
+#### <a name="DynamoDB Config"></a> DynamoDB Config
 
 To test the connection to DynamoDB with the persistence adapter.
 You have to download DynamoDB Locally and follow the instructions from [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
@@ -61,6 +62,15 @@ var myDynamoDB = new awsSdk.DynamoDB({
 ```
 Region is really important, you can find the available regions [here](https://docs.aws.amazon.com/en_en/general/latest/gr/rande.html)
 
+### <a name="Usage"></a> Usage
+
+Once that you have configure everythin. Run alexa-skill-local command. 
+
+```
+$ alexa-skill-local
+```
+
+When prompted open `http://localhost:3001` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
 
 
 ## <a name="Resources"></a>More Resources 📢
