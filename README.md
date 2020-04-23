@@ -32,10 +32,6 @@ Install alexa-skill-local. It can be installed globally (recommended) or in your
 $ npm install -g alexa-skill-local
 ```
 
-Give permissions to DynamoDbPersistanceAdapter to allow save data between sessions
-```
-
-```
 
 ### <a name="Usage"></a> Usage
 
@@ -46,6 +42,24 @@ $ alexa-skill-local
 ```
 
 When prompted open `http://localhost:3001` in your browser. Login with your Amazon developer account to grant alexa-skill-local an access to update your skill's endpoint
+
+### <a name="Using with DynamoDB"></a> Ussing with DynamoDB
+
+To test the connection to DynamoDB with the persistence adapter.
+You have to download DynamoDB Locally and follow the instructions from [here](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DynamoDBLocal.DownloadingAndRunning.html).
+
+Once that you have configure your local DynamoDB and check that it is working. You have to edit the DynamoDBClient.js, to fill it with your personal configuration. Your code should look similar to:
+
+```
+var myDynamoDB = new awsSdk.DynamoDB({
+    endpoint: 'http://localhost:8000', // This is the default one
+    accessKeyId: 'your-aws-acces-key-id', //i.e. raquelFishes
+    secretAccessKey: 'your-aws-secret-acces-key', //i.e. raquelFishesSecret
+    region: 'your-region', //eu-west-1
+    apiVersion: 'latest'
+});
+```
+Region is really important, you can find the available regions [here](https://docs.aws.amazon.com/en_en/general/latest/gr/rande.html)
 
 
 
