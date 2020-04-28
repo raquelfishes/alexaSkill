@@ -110,16 +110,14 @@ const SayBirthdayIntentHandler =
         const dateAvailable = day && month && year;
         if ( dateAvailable )
         {
-            console.log( `~~~~ SayBirthdayIntentHandler: dateavailable` );
             if ( !timezone )
             {
-                console.log( `~~~~ SayBirthdayIntentHandler: !timezone` );
                 //timezone = 'Europe/Rome';  // so it works on the simulator, you should uncomment this line, replace with your time zone and comment sentence below
                 return handlerInput.responseBuilder
                     .speak( handlerInput.t( 'NO_TIMEZONE_MSG' ) )
                     .getResponse();
             }
-            console.log( `~~~~ SayBirthdayIntentHandler: ` );
+
             const birthdayData = logic.getBirthdayData( day, month, year, timezone );
             sessionAttributes['age'] = birthdayData.age;
             sessionAttributes['daysLeft'] = birthdayData.daysUntilBirthday;
@@ -136,7 +134,6 @@ const SayBirthdayIntentHandler =
         } 
         else 
         {
-            console.log( `~~~~ SayBirthdayIntentHandler: else` );
             speechText += handlerInput.t( 'MISSING_MSG' );
             // we use intent chaining to trigger the birthday registration multi-turn
             handlerInput.responseBuilder.addDelegateDirective( {
