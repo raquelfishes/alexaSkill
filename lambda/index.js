@@ -283,44 +283,50 @@ const RemindBirthdayIntentHandler =
     }
 };
 
-const CelebrityBirthdaysIntentHandler = {
-    canHandle(handlerInput) {
-        return Alexa.getRequestType(handlerInput.requestEnvelope) === 'IntentRequest'
-            && Alexa.getIntentName(handlerInput.requestEnvelope) === 'CelebrityBirthdaysIntent';
+const CelebrityBirthdaysIntentHandler = 
+{
+    canHandle( handlerInput ) 
+    {
+        return Alexa.getRequestType( handlerInput.requestEnvelope ) === 'IntentRequest'
+            && Alexa.getIntentName( handlerInput.requestEnvelope ) === 'CelebrityBirthdaysIntent';
     },
-    async handle(handlerInput) {
+    async handle( handlerInput ) 
+    {
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
         const name = sessionAttributes['name'] || '';
         let timezone = sessionAttributes['timezone'];
 
-        if (!timezone){
-           //timezone = 'Europe/Rome';  // so it works on the simulator, you should uncomment this line, replace with your time zone and comment sentence below
+        if ( !timezone )
+        {
+            timezone = 'Europe/Madrid';  // so it works on the simulator, you should uncomment this line, replace with your time zone and comment sentence below
             return handlerInput.responseBuilder
-                .speak(handlerInput.t('NO_TIMEZONE_MSG'))
+                .speak( handlerInput.t(' NO_TIMEZONE_MSG' ) )
                 .getResponse();
         }
-        try {
+        try 
+        {
             // call the progressive response service
-            await util.callDirectiveService(handlerInput, handlerInput.t('PROGRESSIVE_MSG', {name: name}));
-        } catch (error) {
+            await util.callDirectiveService( handlerInput, handlerInput.t( 'PROGRESSIVE_MSG', {name: name} ) );
+        } catch ( error ) {
             // if it fails we can continue, but the user will wait without progressive response
-            console.log("Progressive response directive error : " + error);
+            console.log( "Progressive response directive error : " + error );
         }
-        const adjustedDate = logic.getAdjustedDate(timezone);
+        const adjustedDate = logic.getAdjustedDate( timezone );
         // we'll now fetch celebrity birthdays from an external API
-        const response = await logic.fetchBirthdays(adjustedDate.day, adjustedDate.month, constants.MAX_BIRTHDAYS);
-        console.log(JSON.stringify(response));
+        const response = await logic.fetchBirthdays( adjustedDate.day, adjustedDate.month, constants.MAX_BIRTHDAYS );
+        console.log( JSON.stringify( response ) );
         // below we convert the API response to text that Alexa can read
-        const speechResponse = logic.convertBirthdaysResponse(handlerInput, response, true, timezone);
-        let speechText = handlerInput.t('API_ERROR_MSG');
-        if (speechResponse) {
+        const speechResponse = logic.convertBirthdaysResponse( handlerInput, response, true, timezone );
+        let speechText = handlerInput.t( 'API_ERROR_MSG' );
+        if ( speechResponse ) 
+        {
             speechText = speechResponse;
         }
-        speechText += handlerInput.t('POST_CELEBRITIES_HELP_MSG');
+        speechText += handlerInput.t( 'POST_CELEBRITIES_HELP_MSG' );
 
         return handlerInput.responseBuilder
-            .speak(speechText)
-            .reprompt(handlerInput.t('REPROMPT_MSG'))
+            .speak( speechText )
+            .reprompt( handlerInput.t( 'REPROMPT_MSG' ) )
             .getResponse();
     }
 };

@@ -66,7 +66,17 @@ Region field is really important, you can find the available regions [here](http
 
 ### <a name="Usage"></a> Usage
 
-Once that you have configure everythin. Run alexa-skill-local command. 
+
+
+Once that you have configured everything. 
+
+Run your dynamoDB to be able to connect with it:
+
+```
+$ java -Djava.library.path=.<your-dynamoDb-path>/DynamoDBLocal_lib -jar DynamoDBLocal.jar -sharedDb
+```
+
+Run alexa-skill-local command:
 
 ```
 $ alexa-skill-local [-f lambda/index.js]

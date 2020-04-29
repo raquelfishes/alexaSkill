@@ -41,8 +41,7 @@ function getAdjustedDate( timezone )
 {
     const today = moment().tz( timezone ).startOf( 'day' );
 
-    return 
-    {
+    return {
         day: today.date(),
         month: today.month() + 1
     }
@@ -69,8 +68,7 @@ function fetchBirthdays( day, month, limit )
     const url = endpoint + '?query=' + encodeURIComponent( sparqlQuery );
     console.log(url); // in case you want to try the query in a web browser
 
-    var config = 
-    {
+    var config = {
         timeout: 6500, // timeout api call before we reach Alexa's 8 sec timeout, or set globally via axios.defaults.timeout
         headers: { 'Accept': 'application/sparql-results+json' }
     };
@@ -115,7 +113,7 @@ function convertBirthdaysResponse( handlerInput, response, withAge, timezone )
 }
 
 
-function convertBirthdateToYearsOld(person, timezone) 
+function convertBirthdateToYearsOld( person, timezone ) 
 {
     const today = moment().tz( timezone ).startOf( 'day' );
     const wasBorn = moment( person.date_of_birth.value ).tz( timezone ).startOf( 'day' );
