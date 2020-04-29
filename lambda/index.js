@@ -6,6 +6,7 @@ const Alexa = require( 'ask-sdk-core' );
 var util = require( './util' );
 // Get an instance of the persistence adapter
 var interceptors = require( './interceptors' );
+var constants = require( './constants' );
 var logic = require( './logic' );
 
 
@@ -295,7 +296,7 @@ const CelebrityBirthdaysIntentHandler =
         const sessionAttributes = handlerInput.attributesManager.getSessionAttributes()
         const name = sessionAttributes['name'] || '';
         let timezone = sessionAttributes['timezone'];
-
+        
         if ( !timezone )
         {
             timezone = 'Europe/Madrid';  // so it works on the simulator, you should uncomment this line, replace with your time zone and comment sentence below

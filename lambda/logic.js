@@ -40,11 +40,8 @@ function createBirthdayReminder( daysUntilBirthday, timezone, locale, message )
 function getAdjustedDate( timezone ) 
 {
     const today = moment().tz( timezone ).startOf( 'day' );
-
-    return {
-        day: today.date(),
-        month: today.month() + 1
-    }
+    console.log("**cerditos:\t" + today.date() + " " + ( today.month() + 1 ));
+    return { day: today.date(), month: today.month() + 1 };
 }
 
 function fetchBirthdays( day, month, limit )
@@ -69,7 +66,7 @@ function fetchBirthdays( day, month, limit )
     console.log(url); // in case you want to try the query in a web browser
 
     var config = {
-        timeout: 6500, // timeout api call before we reach Alexa's 8 sec timeout, or set globally via axios.defaults.timeout
+        timeout: 16500, // timeout api call before we reach Alexa's 8 sec timeout, or set globally via axios.defaults.timeout
         headers: { 'Accept': 'application/sparql-results+json' }
     };
 
