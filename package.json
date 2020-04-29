@@ -14,7 +14,7 @@
     "url": "git+https://github.com/raquelfishes/alexaSkill.git"
   },
   "author": "raquelfishes",
-  "license": "ISC",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/raquelfishes/alexaSkill/issues"
   },
@@ -26,6 +26,7 @@
     "ask-sdk-s3-persistence-adapter": "^2.7.0",
     "i18next": "^15.0.5",
     "i18next-sprintf-postprocessor": "^0.2.2",
-    "moment-timezone": "^0.5.23"
+    "moment-timezone": "^0.5.23",
+    "axios": "^0.18.0"
   }
 }
