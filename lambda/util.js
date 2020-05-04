@@ -77,9 +77,16 @@ function callDirectiveService(handlerInput, msg)
     return directiveServiceClient.enqueue( directive, apiEndpoint, apiAccessToken );
 }
 
+function supportsAPL(handlerInput) 
+{
+    const { supportedInterfaces } = handlerInput.requestEnvelope.context.System.device;
+    return !!supportedInterfaces['Alexa.Presentation.APL'];
+}
+
 module.exports = 
 { 
     getPersistenceAdapter,
     createReminder,
-    callDirectiveService
+    callDirectiveService,
+    supportsAPL
 };

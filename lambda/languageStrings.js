@@ -39,7 +39,9 @@ const languageStrings = {
             TURNING_YO_MSG: ' turning {{count}}',
             CELEBRITY_BIRTHDAYS_MSG: `These are today's birthdays: `,
             ALSO_TODAY_MSG: 'Also celebrating their birthday today are: ',
-            POST_CELEBRITIES_HELP_MSG: 'Maybe you can now check how many days are left until your birthday. And remember that you can also create a reminder for it. What would you like to do next? '
+            POST_CELEBRITIES_HELP_MSG: 'Maybe you can now check how many days are left until your birthday. And remember that you can also create a reminder for it. What would you like to do next? ',
+            LAUNCH_HEADER_MSG: 'Happy Birthday',
+            LAUNCH_HINT_MSG: ['how many days until my birthday?', 'which celebrities have birthdays today?', 'set up a reminder for my birthday', 'register my birthday']
         }
     },
     es: {
@@ -79,7 +81,9 @@ const languageStrings = {
             TURNING_YO_MSG_plural: ' cumple {{count}} años',
             CELEBRITY_BIRTHDAYS_MSG: 'En esta fecha cumplen años: ',
             ALSO_TODAY_MSG: 'También hoy cumplen: ',
-            POST_CELEBRITIES_HELP_MSG: 'Quizá ahora puedes preguntar por cuaantos días quedan hasta tu cumpleaños. Y recuerda que también puedes configurar un recordatorio para no olvidarlo. Que quieres hacer ahora? '
+            POST_CELEBRITIES_HELP_MSG: 'Quizá ahora puedes preguntar por cuantos días quedan hasta tu cumpleaños. Y recuerda que también puedes configurar un recordatorio para no olvidarlo. Que quieres hacer ahora? ',
+            LAUNCH_HEADER_MSG: 'Feliz Cumpleaños',
+            LAUNCH_HINT_MSG: ['cuanto falta para mi cumpleaños?', 'quién cumple años hoy?', 'crea un recordatorio para mi cumpleaños', 'registra mi fecha de cumpleaños']
         }
     }
 };
